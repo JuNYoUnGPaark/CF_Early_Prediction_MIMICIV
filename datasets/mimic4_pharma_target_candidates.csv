@@ -1,0 +1,24 @@
+﻿itemid,label,rows,continuous_rows,noncontinuous_rows,table4_id,table4_group,table4_drug,match_type,n_table4_targets,mapping_status
+222168,Propofol,43384,33906,9478,pm80,Propofol,propofol,exact_constituent,1,exact_unique
+222168,Propofol,43384,33906,9478,pm80,Propofol,,exact_group,1,exact_unique
+221906,Norepinephrine,32748,32748,0,pm39,norepinephrine,norepinephrine,exact_constituent,1,exact_unique
+221906,Norepinephrine,32748,32748,0,pm39,norepinephrine,,exact_group,1,exact_unique
+221744,Fentanyl,21145,1363,19782,pm86,Opiate,Fentanyl,exact_constituent,1,exact_unique
+225798,Vancomycin,11272,0,11272,pm73,Administriation of antibiotics,vancomycin,exact_constituent,1,exact_unique
+225883,Meropenem,5048,0,5048,pm73,Administriation of antibiotics,Meropenem,exact_constituent,1,exact_unique
+225974,Metoprolol,4259,0,4259,pm51,B-Blocker,Metoprolol,exact_constituent,1,exact_unique
+225153,Labetalol,1708,499,1209,pm51,B-Blocker,labetalol,exact_constituent,1,exact_unique
+225859,Ciprofloxacin,1435,0,1435,pm73,Administriation of antibiotics,Ciprofloxacin,exact_constituent,1,exact_unique
+225850,Cefazolin,1304,0,1304,pm73,Administriation of antibiotics,Cefazolin,exact_constituent,1,exact_unique
+221468,Diltiazem,1292,926,366,pm50,Ca Antagonists,Diltiazem,exact_constituent,1,exact_unique
+221429,Esmolol,935,935,0,pm51,B-Blocker,Esmolol,exact_constituent,1,exact_unique
+221653,Dobutamine,670,670,0,pm41,dobutamine,,exact_group,1,exact_unique
+225879,Levofloxacin,486,0,486,pm73,Administriation of antibiotics,Levofloxacin,exact_constituent,1,exact_unique
+225860,Clindamycin,429,0,429,pm73,Administriation of antibiotics,Clindamycin,exact_constituent,1,exact_unique
+221986,Milrinone,294,294,0,pm42,milrinone,,exact_group,1,exact_unique
+225902,Tobramycin,129,0,129,pm73,Administriation of antibiotics,Tobramycin,exact_constituent,1,exact_unique
+225866,Erythromycin,95,0,95,pm73,Administriation of antibiotics,Erythromycin,exact_constituent,1,exact_unique
+222318,Verapamil,8,0,8,pm50,Ca Antagonists,Verapamil,exact_constituent,1,exact_unique
+225868,Ethambutol,1,0,1,pm73,Administriation of antibiotics,Ethambutol,exact_constituent,1,exact_unique
+225877,Isoniazid,1,0,1,pm73,Administriation of antibiotics,Isoniazid,exact_constituent,1,exact_unique
+225886,Moxifloxacin,1,0,1,pm73,Administriation of antibiotics,Moxifloxacin,exact_constituent,1,exact_unique

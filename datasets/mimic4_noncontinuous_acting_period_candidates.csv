@@ -1,0 +1,146 @@
+﻿itemid,label,rows,categories,table4_id,table4_group,table4_drug,acting_period,mapping_status
+221744,Fentanyl,19782,Drug Push,pm86,Opiate,Fentanyl,1h,exact_name_match
+225798,Vancomycin,11272,"Drug Push, Non Iv Meds",pm73,Administriation of antibiotics,vancomycin,24h,exact_name_match
+222168,Propofol,9478,Drug Push,pm80,Propofol,propofol,5m,exact_name_match
+225883,Meropenem,5048,Drug Push,pm73,Administriation of antibiotics,Meropenem,24h,exact_name_match
+225974,Metoprolol,4259,Drug Push,pm51,B-Blocker,Metoprolol,24h,exact_name_match
+225859,Ciprofloxacin,1435,"Drug Push, Non Iv Meds",pm73,Administriation of antibiotics,Ciprofloxacin,24h,exact_name_match
+225850,Cefazolin,1304,Drug Push,pm73,Administriation of antibiotics,Cefazolin,24h,exact_name_match
+225153,Labetalol,1209,Drug Push,pm51,B-Blocker,labetalol,4h,exact_name_match
+225879,Levofloxacin,486,"Drug Push, Non Iv Meds",pm73,Administriation of antibiotics,Levofloxacin,24h,exact_name_match
+225860,Clindamycin,429,"Drug Push, Non Iv Meds",pm73,Administriation of antibiotics,Clindamycin,24h,exact_name_match
+221468,Diltiazem,366,Drug Push,pm50,Ca Antagonists,Diltiazem,12h,exact_name_match
+225902,Tobramycin,129,Drug Push,pm73,Administriation of antibiotics,Tobramycin,24h,exact_name_match
+225866,Erythromycin,95,"Drug Push, Non Iv Meds",pm73,Administriation of antibiotics,Erythromycin,24h,exact_name_match
+222318,Verapamil,8,Drug Push,pm50,Ca Antagonists,Verapamil,12h,exact_name_match
+225868,Ethambutol,1,Non Iv Meds,pm73,Administriation of antibiotics,Ethambutol,24h,exact_name_match
+225877,Isoniazid,1,Non Iv Meds,pm73,Administriation of antibiotics,Isoniazid,24h,exact_name_match
+225886,Moxifloxacin,1,Non Iv Meds,pm73,Administriation of antibiotics,Moxifloxacin,24h,exact_name_match
+220949,Dextrose 5%,36864,"Bolus, Drug Push",,,,,unmapped
+225799,Gastric Meds,36702,Bolus,,,,,unmapped
+226453,GT Flush,27316,Bolus,,,,,unmapped
+225158,NaCl 0.9%,19087,"Bolus, Drug Push",,,,,unmapped
+226452,PO Intake,15419,Bolus,,,,,unmapped
+225975,Heparin Sodium (Prophylaxis),11592,Drug Push,,,,,unmapped
+223258,Insulin - Regular,10727,Drug Push,,,,,unmapped
+225797,Free Water,9990,Bolus,,,,,unmapped
+225943,Solution,8557,"Bolus, Drug Push",,,,,unmapped
+221833,Hydromorphone (Dilaudid),6850,Drug Push,,,,,unmapped
+225851,Cefepime,6768,Drug Push,,,,,unmapped
+221794,Furosemide (Lasix),6684,Drug Push,,,,,unmapped
+223262,Insulin - Humalog,6635,Drug Push,,,,,unmapped
+221668,Midazolam (Versed),6374,Drug Push,,,,,unmapped
+225893,Piperacillin/Tazobactam (Zosyn),6045,Drug Push,,,,,unmapped
+225884,Metronidazole,5771,"Drug Push, Non Iv Meds",,,,,unmapped
+225907,Famotidine (Pepcid),4844,Drug Push,,,,,unmapped
+225910,Pantoprazole (Protonix),4386,Drug Push,,,,,unmapped
+225154,Morphine Sulfate,3182,Drug Push,,,,,unmapped
+221385,Lorazepam (Ativan),2904,Drug Push,,,,,unmapped
+225828,LR,2341,Bolus,,,,,unmapped
+223260,Insulin - Glargine,2263,Drug Push,,,,,unmapped
+228315,Acetaminophen-IV,1872,Drug Push,,,,,unmapped
+221828,Hydralazine,1860,Drug Push,,,,,unmapped
+225888,Nafcillin,1670,Drug Push,,,,,unmapped
+225855,Ceftriaxone,1542,Drug Push,,,,,unmapped
+225842,Ampicillin,1402,Drug Push,,,,,unmapped
+221824,Haloperidol (Haldol),1292,Drug Push,,,,,unmapped
+225837,Acyclovir,1283,"Drug Push, Non Iv Meds",,,,,unmapped
+225853,Ceftazidime,1221,Drug Push,,,,,unmapped
+220952,Dextrose 50%,1107,Drug Push,,,,,unmapped
+225892,Piperacillin,1017,Drug Push,,,,,unmapped
+223259,Insulin - NPH,863,Drug Push,,,,,unmapped
+226364,OR Crystalloid Intake,807,Bolus,,,,,unmapped
+225881,Linezolid,687,"Drug Push, Non Iv Meds",,,,,unmapped
+225152,Heparin Sodium,612,Drug Push,,,,,unmapped
+228316,Levetiracetam (Keppra),589,Drug Push,,,,,unmapped
+225843,Ampicillin/Sulbactam (Unasyn),553,Drug Push,,,,,unmapped
+226361,Pre-Admission/Non-ICU Intake,536,Bolus,,,,,unmapped
+225845,Azithromycin,518,"Drug Push, Non Iv Meds",,,,,unmapped
+225885,Micafungin,514,Drug Push,,,,,unmapped
+225899,Bactrim (SMX/TMP),491,"Drug Push, Non Iv Meds",,,,,unmapped
+227689,Dilantin,463,Drug Push,,,,,unmapped
+227690,Fosphenytoin,434,Drug Push,,,,,unmapped
+225869,Fluconazole,413,"Drug Push, Non Iv Meds",,,,,unmapped
+227533,Sodium Bicarbonate 8.4% (Amp),373,Drug Push,,,,,unmapped
+221623,Diazepam (Valium),367,Drug Push,,,,,unmapped
+225906,Enoxaparin (Lovenox),299,Drug Push,,,,,unmapped
+225909,Lansoprazole (Prevacid),299,Drug Push,,,,,unmapped
+225847,Aztreonam,297,Drug Push,,,,,unmapped
+229583,Beneprotein.,272,Bolus,,,,,unmapped
+227520,Methadone Hydrochloride,264,Drug Push,,,,,unmapped
+226368,OR Packed RBC Intake,255,Bolus,,,,,unmapped
+225863,Daptomycin,239,Drug Push,,,,,unmapped
+225159,NaCl 0.45%,237,Bolus,,,,,unmapped
+225905,Voriconazole,231,"Drug Push, Non Iv Meds",,,,,unmapped
+225890,Penicillin G potassium,225,Drug Push,,,,,unmapped
+221347,Amiodarone,222,Drug Push,,,,,unmapped
+225875,Gentamicin,214,Drug Push,,,,,unmapped
+229616,Ondansetron (Zofran),185,Drug Push,,,,,unmapped
+225911,Ranitidine (Prophylaxis),160,Drug Push,,,,,unmapped
+226367,OR FFP Intake,155,Bolus,,,,,unmapped
+221555,Cisatracurium,151,Drug Push,,,,,unmapped
+225865,Doxycycline,151,Drug Push,,,,,unmapped
+225944,Sterile Water,146,"Bolus, Drug Push",,,,,unmapped
+229233,Rocuronium,127,Drug Push,,,,,unmapped
+229072,Ketorolac (Toradol),123,Drug Push,,,,,unmapped
+226365,OR Colloid Intake,109,Bolus,,,,,unmapped
+229574,Fiber Supplement (i.e. Banana Flakes),99,Bolus,,,,,unmapped
+226369,OR Platelet Intake,97,Bolus,,,,,unmapped
+225973,Meperidine (Demerol),96,Drug Push,,,,,unmapped
+225913,Coumadin (Warfarin),94,Drug Push,,,,,unmapped
+229070,Glycopyrolate (Robinul),89,Drug Push,,,,,unmapped
+227694,Omeprazole (Prilosec),88,Drug Push,,,,,unmapped
+226372,OR Cell Saver Intake,86,Bolus,,,,,unmapped
+225912,Carafate (Sucralfate),85,Drug Push,,,,,unmapped
+229069,Digoxin (Lanoxin),81,Drug Push,,,,,unmapped
+225838,Ambisome,79,Drug Push,,,,,unmapped
+229639,Bumetanide (Bumex),77,Drug Push,,,,,unmapped
+225873,Gancyclovir,71,Drug Push,,,,,unmapped
+225862,Colistin,70,Drug Push,,,,,unmapped
+225898,Rifampin,57,"Drug Push, Non Iv Meds",,,,,unmapped
+221282,Adenosine,51,Drug Push,,,,,unmapped
+226363,Cath Lab Intake,51,Bolus,,,,,unmapped
+222062,Vecuronium,47,Drug Push,,,,,unmapped
+225840,Amikacin,46,Drug Push,,,,,unmapped
+225876,Imipenem/Cilastatin,46,Drug Push,,,,,unmapped
+229618,Calcium Chloride,45,Drug Push,,,,,unmapped
+226375,PACU Crystalloid Intake,42,Bolus,,,,,unmapped
+229299,Insulin - Novolog,41,Drug Push,,,,,unmapped
+221712,Ketamine,36,Drug Push,,,,,unmapped
+229064,Tigecycline,36,Drug Push,,,,,unmapped
+225937,Ensure (Full),34,Bolus,,,,,unmapped
+226371,OR Cryoprecipitate Intake,32,Bolus,,,,,unmapped
+228003,Tamiflu,31,Non Iv Meds,,,,,unmapped
+221393,Atropine,29,Drug Push,,,,,unmapped
+225844,Atovaquone,29,Non Iv Meds,,,,,unmapped
+229587,Ceftaroline,28,Drug Push,,,,,unmapped
+225908,Fondaparinux,26,Drug Push,,,,,unmapped
+225161,NaCl 3% (Hypertonic Saline),20,Bolus,,,,,unmapped
+222021,Naloxone (Narcan),19,Drug Push,,,,,unmapped
+225848,Caspofungin,18,Drug Push,,,,,unmapped
+229071,Neostigmine (Prostigmin),16,Drug Push,,,,,unmapped
+223261,Insulin - Humalog 75/25,15,Drug Push,,,,,unmapped
+229615,Esomeprazole (Nexium),13,Drug Push,,,,,unmapped
+225945,Lidocaine,11,Drug Push,,,,,unmapped
+226376,PACU Colloid Intake,11,Bolus,,,,,unmapped
+227691,Keflex,10,Non Iv Meds,,,,,unmapped
+223257,Insulin - 70/30,9,Drug Push,,,,,unmapped
+225823,D5 1/2NS,9,Bolus,,,,,unmapped
+225871,Foscarnet,9,Drug Push,,,,,unmapped
+225903,Valgancyclovir,8,Non Iv Meds,,,,,unmapped
+226877,Ensure Plus (Full),7,Bolus,,,,,unmapped
+227070,PACU Packed RBC Intake,7,Bolus,,,,,unmapped
+229068,Protamine sulfate,7,Drug Push,,,,,unmapped
+225896,Quinine,6,Non Iv Meds,,,,,unmapped
+225941,D5 1/4NS,6,Bolus,,,,,unmapped
+225994,Mighty Shake (Vanilla/Strawberry),6,Bolus,,,,,unmapped
+229617,Epinephrine.,6,Drug Push,,,,,unmapped
+225993,Optisource,4,Bolus,,,,,unmapped
+225825,D5NS,2,Bolus,,,,,unmapped
+225827,D5LR,2,Bolus,,,,,unmapped
+226370,OR Autologous Blood Intake,2,Bolus,,,,,unmapped
+226377,PACU PO Intake,2,Bolus,,,,,unmapped
+227072,PACU FFP Intake,2,Bolus,,,,,unmapped
+229061,Ertapenem sodium (Invanz),2,Drug Push,,,,,unmapped
+220950,Dextrose 10%,1,Bolus,,,,,unmapped
+229063,Pamidronate,1,Drug Push,,,,,unmapped
