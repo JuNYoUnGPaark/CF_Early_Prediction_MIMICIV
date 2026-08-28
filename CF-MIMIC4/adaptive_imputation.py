@@ -76,26 +76,36 @@ def _latest_measurement_time_by_grid_cell(events: pd.DataFrame, grid_stay_info: 
 
 
 # (2) Cardiac Output default 계산 (= 3.5 * 0.007184 * weight^0.425 * height^0.725)
-def prepare_cardiac_output_defaults(stay_ids, height_weight_events: pd.DataFrame):
+def prepare_cardiac_output_defaults(stay_ids, height_weight_events: pd.DataFrame, training_stay_ids=None):
     hw = height_weight_events[height_weight_events["stay_id"].isin(set(stay_ids))].copy()
     hw["charttime"] = pd.to_datetime(hw["charttime"], errors="coerce")
     hw["value"] = pd.to_numeric(hw["value"], errors="coerce")
+
     hw = hw.dropna(subset=["stay_id", "charttime", "variable", "value"]).copy()
     hw = hw.loc[hw["variable"].isin(["Height", "Weight"])].copy()
 
     # Stay별 가장 이른 Height / Weight 사용
     hw = (hw.sort_values(["stay_id", "variable", "charttime"])
-           .drop_duplicates(["stay_id", "variable"], keep="first"))
-    hw = (hw.pivot(index="stay_id", columns="variable", values="value")
-            .reindex(stay_ids))
+          .drop_duplicates(["stay_id", "variable"], keep="first"))
+    hw = hw.pivot(index="stay_id", columns="variable", values="value").reindex(stay_ids)
+
     if "Height" not in hw.columns: hw["Height"] = np.nan
     if "Weight" not in hw.columns: hw["Weight"] = np.nan
 
-    # Height/Weight가 없는 stay를 현재 전달된 stay들의 평균으로
-    hw["Height"] = hw["Height"].fillna(hw["Height"].mean())
-    hw["Weight"] = hw["Weight"].fillna(hw["Weight"].mean())
+    # Missing Height / Weight를 채울 평균은 TRAINING stay에서만 계산
+    if training_stay_ids is None:
+        train_mask = hw.index.isin(stay_ids)
+    else:
+        train_mask = hw.index.isin(set(training_stay_ids))
+
+    height_mean = hw.loc[train_mask, "Height"].mean()
+    weight_mean = hw.loc[train_mask, "Weight"].mean()
+
+    hw["Height"] = hw["Height"].fillna(height_mean)
+    hw["Weight"] = hw["Weight"].fillna(weight_mean)
+
     hw["Cardiac Output"] = (3.5 * 0.007184 * np.power(hw["Weight"], 0.425) * np.power(hw["Height"], 0.725))
-    
+
     return hw["Cardiac Output"].astype(float).to_dict()
 
 
@@ -367,10 +377,16 @@ def calculate_imputation_parameters(events: pd.DataFrame, grid_stay_info: pd.Dat
 
 
 # 2. Adaptive Imputation 수행 
-def adaptive_impute_nonpharma(time_grid: pd.DataFrame, raw_grid_values: pd.DataFrame,
-                              nonpharma_merged: pd.DataFrame, grid_stay_info: pd.DataFrame,
-                              imputation_params: pd.DataFrame, height_weight_events: pd.DataFrame,
-                              grid_minutes: int = 60):
+def adaptive_impute_nonpharma(
+    time_grid: pd.DataFrame,
+    raw_grid_values: pd.DataFrame,
+    nonpharma_merged: pd.DataFrame,
+    grid_stay_info: pd.DataFrame,
+    imputation_params: pd.DataFrame,
+    height_weight_events: pd.DataFrame,
+    training_stay_ids=None,
+    grid_minutes: int = 60
+):
     """
         1. 실제 측정값 있음 -> 실제값 사용 -> 새로운 측정값 기준으로 상태 초기화 
         2. 아직 첫 측정 전 -> default values 사용 
@@ -390,7 +406,8 @@ def adaptive_impute_nonpharma(time_grid: pd.DataFrame, raw_grid_values: pd.DataF
     # 2. Cardiac Output stay별 default
     cardiac_output_defaults = prepare_cardiac_output_defaults(
         stay_ids=stay_ids,
-        height_weight_events=height_weight_events
+        height_weight_events=height_weight_events,
+        training_stay_ids=training_stay_ids
     )
 
     # 3. 변수별 imputation parameter
@@ -578,6 +595,14 @@ def static_variables(stays: pd.DataFrame, admissions: pd.DataFrame, patients: pd
                     .drop_duplicates("stay_id", keep="first")
                     .rename(columns={"value": "Height"}))
     static = static.merge(height[["stay_id", "Height"]], on="stay_id", how="left")
+
+    weight = height_weight_events.loc[height_weight_events["variable"] == "Weight", ["stay_id", "charttime", "value"]].copy()
+    weight["charttime"] = pd.to_datetime(weight["charttime"], errors="coerce")
+    weight["value"] = pd.to_numeric(weight["value"], errors="coerce")
+    weight = (weight.dropna(subset=["stay_id", "charttime", "value"])
+              .sort_values(["stay_id", "charttime"])
+              .drop_duplicates("stay_id", keep="first").rename(columns={"value": "Weight"}))
+    static = static.merge(weight[["stay_id", "Weight"]], on="stay_id", how="left")
     
     # 5. ICU 입실 시점의 hospital service를 선택 
     service = services[["hadm_id", "transfertime", "curr_service"]].copy()
@@ -614,6 +639,7 @@ def static_variables(stays: pd.DataFrame, admissions: pd.DataFrame, patients: pd
     # continuous -> mean
     static["Age"] = static["Age"].fillna(static.loc[train_mask, "Age"].mean())
     static["Height"] = static["Height"].fillna(static.loc[train_mask, "Height"].mean())
+    static["Weight"] = static["Weight"].fillna(static.loc[train_mask, "Weight"].mean())
 
     # categorical -> mode
     sex_mode = static.loc[train_mask, "Sex"].dropna().mode().iloc[0]
@@ -625,4 +651,4 @@ def static_variables(stays: pd.DataFrame, admissions: pd.DataFrame, patients: pd
     surgical_mode = static.loc[train_mask, "Surgical admission"].dropna().mode().iloc[0]
     static["Surgical admission"] = static["Surgical admission"].fillna(surgical_mode).astype("int8")
     
-    return static[["stay_id", "Age", "Sex", "Height", "Emergency admission", "Surgical admission"]].copy()
+    return static[["stay_id", "Age", "Sex", "Height", "Weight", "Emergency admission", "Surgical admission"]].copy()

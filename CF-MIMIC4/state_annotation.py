@@ -256,16 +256,9 @@ def prepare_drug_presence(time_grid: pd.DataFrame, pharma_merged: pd.DataFrame):
 # -----------------------------------------------------------------------------------------------------------------------
 # Circulatory State Annotation
 # -----------------------------------------------------------------------------------------------------------------------
-def annotate_circulatory_state(
-    time_grid: pd.DataFrame,
-    raw_grid_values: pd.DataFrame,
-    nonpharma_merged: pd.DataFrame,
-    pharma_merged: pd.DataFrame,
-    lactate_threshold: float = 2.0,
-    map_threshold: float = 65.0,
-    grid_minutes: int = 60,
-    window_minutes: int = 60
-):
+def annotate_circulatory_state(time_grid: pd.DataFrame, raw_grid_values: pd.DataFrame, nonpharma_merged: pd.DataFrame,
+                               pharma_merged: pd.DataFrame, lactate_threshold: float = 2.0, map_threshold: float = 65.0,
+                               grid_minutes: int = 60, window_minutes: int = 60):
     """
         MIMIC-III circEWS source code 기준
 
@@ -297,44 +290,21 @@ def annotate_circulatory_state(
     assert window_points == 1
 
     # 1. Annotation에 필요한 값 생성
-    lactate = prepare_annotation_lactate(
-        time_grid=time_grid,
-        nonpharma_merged=nonpharma_merged,
-        threshold=lactate_threshold
-    )
-
-    map_values = prepare_annotation_map(
-        time_grid=time_grid,
-        raw_grid_values=raw_grid_values
-    )
-
-    drug = prepare_drug_presence(
-        time_grid=time_grid,
-        pharma_merged=pharma_merged
-    )
+    lactate = prepare_annotation_lactate(time_grid=time_grid, nonpharma_merged=nonpharma_merged, threshold=lactate_threshold)
+    map_values = prepare_annotation_map(time_grid=time_grid, raw_grid_values=raw_grid_values)
+    drug = prepare_drug_presence(time_grid=time_grid, pharma_merged=pharma_merged) 
 
     # 2. 하나의 table로 합치기
-    state = lactate.merge(
-        map_values, on=["stay_id", "gridtime"], how="left"
-    )
-    state = state.merge(
-        drug, on=["stay_id", "gridtime"], how="left"
-    )
-
-    state["vasoactive_inotrope"] = (
-        state["vasoactive_inotrope"].fillna(0).astype("int8")
-    )
+    state = lactate.merge(map_values, on=["stay_id", "gridtime"], how="left")
+    state = state.merge(drug, on=["stay_id", "gridtime"], how="left")
+    state["vasoactive_inotrope"] = (state["vasoactive_inotrope"].fillna(0).astype("int8"))
 
     # 3. 기본 상태 = source의 unknown / maybe / probably not
     state["state"] = "AMBIGUOUS"
-
     has_map = state["annotation_map"].notna()
 
     # 4. MAP/drug criterion
-    hemodynamic_failure = (
-        (state["annotation_map"] <= map_threshold)
-        | (state["vasoactive_inotrope"] == 1)
-    )
+    hemodynamic_failure = ((state["annotation_map"] <= map_threshold) | (state["vasoactive_inotrope"] == 1))
 
     # 5. 저자 코드의 event 0
     # MAP가 존재하면서 MAP>65이고 drug가 없으면 Lactate와 관계없이 stable
@@ -342,22 +312,8 @@ def annotate_circulatory_state(
     state.loc[is_no_cf, "state"] = "NO_CF"
 
     # 6. MAP/drug criterion을 만족한 경우에만 Lactate 확인
-    is_cf = (
-        has_map
-        & hemodynamic_failure
-        & state["annotation_lactate"].notna()
-        & (state["annotation_lactate"] >= lactate_threshold)
-    )
-
+    is_cf = (has_map & hemodynamic_failure & state["annotation_lactate"].notna() 
+             & (state["annotation_lactate"] >= lactate_threshold))
     state.loc[is_cf, "state"] = "CF"
 
-    return state[
-        [
-            "stay_id",
-            "gridtime",
-            "annotation_lactate",
-            "annotation_map",
-            "vasoactive_inotrope",
-            "state"
-        ]
-    ].copy()
+    return state[["stay_id", "gridtime", "annotation_lactate", "annotation_map", "vasoactive_inotrope", "state"]].copy()
