@@ -1,0 +1,9 @@
+{
+    "n_estimators": 5000,
+    "num_leaves": 32,
+    "learning_rate": 0.05,
+    "colsample_bytree": 0.33,
+    "subsample": 0.66,
+    "best_iteration": 136,
+    "validation_auprc": 0.5174891641163606
+}
